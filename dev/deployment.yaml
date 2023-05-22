@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-demo-app
+  labels:
+    app: spring-demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-demo-app
+  template:
+    metadata:
+      labels:
+        app: spring-demo-app
+    spec:
+      containers:
+      - name: spring-demo-app
+        image: rajshivaram7/springboot-demo-app:latest
+        resources:
+          limits:
+            memory: 1024M
+            cpu: "1"
+        envFrom:
+          - secretRef:
+              name: test-postgres-connection
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          failureThreshold: 30
+          periodSeconds: 10
+
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values:
+                      - amd64
