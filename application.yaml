@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: hspdemo-argo-Application
+    name: spring-demo-argo-application
     namespace: rajtest
 spec:
     project: default
