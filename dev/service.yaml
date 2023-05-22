@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: spring-demo-app-service
+  name: spring-demo-service
 spec:
   selector:
     app: spring-demo-app
