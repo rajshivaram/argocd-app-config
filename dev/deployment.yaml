@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-demo
+  name: springdemoapp
   labels:
-    app: spring-demo
+    app: springdemoapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spring-demo
+      app: springdemoapp
   template:
     metadata:
       labels:
-        app: spring-demo
+        app: springdemoapp
     spec:
       containers:
-      - name: spring-demo
+      - name: springdemoapp
         image: rajshivaram7/springboot-demo-app:latest
         resources:
           limits:
