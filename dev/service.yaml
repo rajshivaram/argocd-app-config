@@ -9,24 +9,3 @@ spec:
     - protocol: TCP
       port: 8082
       targetPort: 8080
-  parameters:
-    engine: postgres
-    engineVersion: "14.5"
-    storageGB: 10
-    passwordSecretRef:
-      namespace: default
-      name: psqlsecret
-      key: password
-  writeConnectionSecretToRef:
-    name: test-postgres-connection
-
-# password: ChangeMeBeforeActualUse Change the password before deploying to your cluster
----
-apiVersion: v1
-data:
-  password: Q2hhbmdlTWVCZWZvcmVBY3R1YWxVc2U=
-kind: Secret
-metadata:
-  name: psqlsecret
-  namespace: default
-type: Opaque
