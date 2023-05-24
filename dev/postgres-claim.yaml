@@ -23,5 +23,5 @@ data:
 kind: Secret
 metadata:
   name: psqlsecret
-  namespace: default
+  namespace: raj-new
 type: Opaque
