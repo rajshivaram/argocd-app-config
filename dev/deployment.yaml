@@ -23,7 +23,7 @@ spec:
             cpu: "1"
         envFrom:
           - secretRef:
-              name: test-postgres-connection
+              name: springdemo-postgres-connection
         startupProbe:
           httpGet:
             path: /health
