@@ -17,7 +17,16 @@ spec:
     syncPolicy:
         syncOptions:
         - CreateNameSpace=true
-
         automated:
             selfHeal: true
             prune: true
+    lifecycle:
+        preSync:
+            # Wait condition for database creation
+            hook:
+                exec:
+                    command: ["/bin/sh", "-c"]
+                    args:
+                      - |
+                        echo "Waiting for database creation"
+                        sleep 600s
