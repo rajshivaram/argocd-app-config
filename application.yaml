@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
     name: springdemoapp
-    namespace: argocd
+    namespace: default
 spec:
     project: default
 
@@ -12,7 +12,7 @@ spec:
         path: dev
     destination:
         server: https://kubernetes.default.svc
-        namespace: argocd
+        namespace: default
 
     syncPolicy:
         syncOptions:
