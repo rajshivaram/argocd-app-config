@@ -1,32 +1,33 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: springdemoapp
-    namespace: default
+  name: springdemoapp
+  namespace: default
 spec:
-    project: default
-
-    source:
-        repoURL: https://github.com/rajshivaram/argocd-app-config.git
-        targetRevision: HEAD
-        path: dev
-    destination:
-        server: https://kubernetes.default.svc
-        namespace: default
-
-    syncPolicy:
-        syncOptions:
-        - CreateNameSpace=true
-        automated:
-            selfHeal: true
-            prune: true
-    lifecycle:
-        preSync:
-            # Wait condition for database creation
-            hook:
-                exec:
-                    command: ["/bin/sh", "-c"]
-                    args:
-                      - |
-                        echo "Waiting for database creation"
-                        sleep 600s
+  project: default
+  source:
+    repoURL: https://github.com/rajshivaram/argocd-app-config.git
+    targetRevision: HEAD
+    path: dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    syncOptions:
+      - CreateNameSpace=true
+    automated:
+      selfHeal: true
+      prune: true
+    hooks:
+      - name: wait-for-database
+        sync:
+          timeout: 600s
+        before:
+          - source:
+              repoURL: https://github.com/rajshivaram/argocd-app-config.git
+              targetRevision: HEAD
+              path: dev/postgres-claim.yaml
+            destination:
+              server: https://kubernetes.default.svc
+              namespace: default

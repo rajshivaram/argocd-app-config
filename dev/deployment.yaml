@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,22 +16,15 @@ spec:
         app: springdemoapp
     spec:
       containers:
-      - name: springdemoapp
-        image: rajshivaram7/springboot-demo-app:latest
-        resources:
-          limits:
-            memory: 1024M
-            cpu: "1"
-        envFrom:
-          - secretRef:
-              name: springdemo-postgres-connection
-        startupProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          failureThreshold: 30
-          periodSeconds: 10
-
+        - name: springdemoapp
+          image: rajshivaram7/springboot-demo-app:latest
+          resources:
+            limits:
+              memory: 1024M
+              cpu: "1"
+          envFrom:
+            - secretRef:
+                name: springdemo-postgres-connection
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
