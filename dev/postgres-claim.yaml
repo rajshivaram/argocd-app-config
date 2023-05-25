@@ -10,7 +10,7 @@ spec:
     storageGB: 10
     passwordSecretRef:
       namespace: default
-      name: psqlsecret
+      name: springdemo-psqlsecret
       key: password
   writeConnectionSecretToRef:
     name: springdemo-postgres-connection
@@ -22,6 +22,6 @@ data:
   password: Q2hhbmdlTWVCZWZvcmVBY3R1YWxVc2U=
 kind: Secret
 metadata:
-  name: psqlsecret
+  name: springdemo-psqlsecret
   namespace: default
 type: Opaque
