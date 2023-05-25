@@ -2,14 +2,14 @@ apiVersion: platform.hsdp.io/v1alpha1
 kind: SQLInstance
 metadata:
   name: springdemo-postgres
-  namespace: raj-new
+  namespace: default
 spec:
   parameters:
     engine: postgres
     engineVersion: "14.5"
     storageGB: 10
     passwordSecretRef:
-      namespace: raj-new
+      namespace: default
       name: psqlsecret
       key: password
   writeConnectionSecretToRef:
@@ -23,5 +23,5 @@ data:
 kind: Secret
 metadata:
   name: psqlsecret
-  namespace: raj-new
+  namespace: default
 type: Opaque
