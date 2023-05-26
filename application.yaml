@@ -24,4 +24,4 @@ spec:
       source:
         repoURL: https://github.com/rajshivaram/argocd-app-config.git
         targetRevision: HEAD
-        path: dev/db/postgres-claim.yaml
+        path: dev/postgres-claim.yaml
