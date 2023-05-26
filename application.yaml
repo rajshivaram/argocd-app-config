@@ -23,7 +23,7 @@ spec:
       - name: wait-for-database
         sync:
           timeout: 600s
-        after:
+        before:
           - source:
               repoURL: https://github.com/rajshivaram/argocd-app-config.git
               targetRevision: HEAD
