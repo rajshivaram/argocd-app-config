@@ -23,8 +23,3 @@ spec:
     - name: database
       source:
         path: dev/postgres-claim.yaml
-    - name: application
-      source:
-        path:
-          - dev/deployment.yaml
-          - dev/service.yaml
