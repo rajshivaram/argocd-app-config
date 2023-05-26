@@ -20,16 +20,15 @@ spec:
       selfHeal: true
       prune: true
   dependencies:
-    - name: springdemo-postgres
+    - name: database
       source:
         repoURL: https://github.com/rajshivaram/argocd-app-config.git
         targetRevision: HEAD
-        path: dev
-  hooks:
-    - name: pre-sync
-      sync:
-        pre:
-          - name: install-claim
-            before:
-              - deploy.yaml
-              - service.yaml
+        path: dev/claim.yaml
+    - name: application
+      source:
+        repoURL: https://github.com/rajshivaram/argocd-app-config.git
+        targetRevision: HEAD
+        path:
+          - dev/deploy.yaml
+          - dev/service.yaml
