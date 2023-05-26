@@ -22,13 +22,9 @@ spec:
   dependencies:
     - name: database
       source:
-        repoURL: https://github.com/rajshivaram/argocd-app-config.git
-        targetRevision: HEAD
-        path: dev/claim.yaml
+        path: claim.yaml
     - name: application
       source:
-        repoURL: https://github.com/rajshivaram/argocd-app-config.git
-        targetRevision: HEAD
         path:
-          - dev/deploy.yaml
-          - dev/service.yaml
+          - deploy.yaml
+          - service.yaml
