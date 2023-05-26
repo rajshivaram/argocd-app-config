@@ -19,15 +19,9 @@ spec:
     automated:
       selfHeal: true
       prune: true
-    hooks:
-      - name: wait-for-database
-        sync:
-          timeout: 600s
-        before:
-          - source:
-              repoURL: https://github.com/rajshivaram/argocd-app-config.git
-              targetRevision: HEAD
-              path: dev/db/
-            destination:
-              server: https://kubernetes.default.svc
-              namespace: default
+  dependencies:
+    - name: springdemo-postgres
+      source:
+        repoURL: https://github.com/rajshivaram/argocd-app-config.git
+        targetRevision: HEAD
+        path: dev/db/postgres-claim.yaml
