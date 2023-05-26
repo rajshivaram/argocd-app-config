@@ -22,9 +22,9 @@ spec:
   dependencies:
     - name: database
       source:
-        path: postgres-claim.yaml
+        path: dev/postgres-claim.yaml
     - name: application
       source:
         path:
-          - deployment.yaml
-          - service.yaml
+          - dev/deployment.yaml
+          - dev/service.yaml
