@@ -20,7 +20,7 @@ spec:
           image: rajshivaram7/springboot-demo-app:latest
           resources:
             limits:
-              memory: 1024M
+              memory: 512Mi
               cpu: "1"
           envFrom:
             - secretRef:
